@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 df = pd.read_parquet("data/processed/clean_dataset.parquet")
 
@@ -26,3 +27,9 @@ df["Imbalance"] = (df["L10_bids"] - df["L10_asks"])/(df["L10_bids"] + df["L10_as
 print("Min Imbalance: ", df["Imbalance"].min())
 print("Max Imbalance: ", df["Imbalance"].max())
 print("Mean Imbalance: ", df["Imbalance"].mean())
+
+output_dir = Path("data/processed")
+output_dir.mkdir(parents=True, exist_ok=True)
+df.to_parquet(output_dir / "features.parquet", index=False)
+print("\nFeatures dataset saved successfully.")
+print("Shape:", df.shape)
