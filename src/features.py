@@ -12,15 +12,23 @@ print("Maximum spread:", df["spread"].max())
 ask_cols = [f"asks[{i}].size" for i in range(10)]
 bid_cols = [f"bids[{i}].size" for i in range(10)]
 
+ask_cols_50 = [f"asks[{i}].size" for i in range(50)]
+bid_cols_50 = [f"bids[{i}].size" for i in range(50)]
+
 df["L10_bids"] = df[bid_cols].sum(axis=1)
 df["L10_asks"] = df[ask_cols].sum(axis=1)
 df["L10_total"] = df["L10_bids"] + df["L10_asks"]
 
+df["L50_bids"] = df[bid_cols_50].sum(axis=1)
+df["L50_asks"] = df[ask_cols_50].sum(axis=1)
+df["L50_total"] = df["L50_bids"] + df["L50_asks"]
+
 df["L10_log"] = np.log1p(df["L10_total"])
-print("\nL10 Liquidity Statistics")
-print("Min L10_log :", df["L10_log"].min())
-print("Max L10_log :", df["L10_log"].max())
-print("Mean L10_log:", df["L10_log"].mean())
+df["L50_log"] = np.log1p(df["L50_total"])
+print("\nL50 Liquidity Statistics")
+print("Min L50_log :", df["L50_log"].min())
+print("Max L50_log :", df["L50_log"].max())
+print("Mean L50_log:", df["L50_log"].mean())
 
 
 df["Imbalance"] = (df["L10_bids"] - df["L10_asks"])/(df["L10_bids"] + df["L10_asks"])
