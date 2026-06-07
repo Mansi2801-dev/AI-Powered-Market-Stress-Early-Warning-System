@@ -64,3 +64,24 @@ print(df.loc[idx, [
     "QT_future_imbalance",
     "Future_Stress_Score"
 ]])
+
+training_df = df[
+    [
+        "L10_log",
+        "L50_log",
+        "spread",
+        "Imbalance",
+        "Future_Stress_Score"
+    ]
+].copy()
+
+training_df = training_df.dropna(subset=["Future_Stress_Score"])
+
+training_df.to_parquet(
+    "data/processed/training_dataset.parquet",
+    index=False
+)
+
+print("\n--- Training Dataset ---")
+print("Shape:", training_df.shape)
+print(training_df.head())
