@@ -63,28 +63,44 @@ pip install -r Requirements.txt
 
 ## Project Structure
 ├── data/
+
 │ ├── raw/
+
 │ └── processed/
+
 │
+
 ├── models/
+
 │ └── stress_model.pth
+
 │
+
 ├── src/
+
 │ ├── preprocess.py
+
 │ ├── features.py
+
 │ ├── labels.py
+
 │ ├── sequence_dataset.py
+
 │ ├── split_dataset.py
+
 │ ├── model.py
+
 │ ├── train.py
+
 │ ├── stress_threshold.py
+
 │ └── app.py
+
 │
 
 ├── requirements.txt
 
 └── README.md
-
 ## Dataset
 Make a folder named 'Data', inside it make 2 subfolders 'raw' and 'processed'. 
 
