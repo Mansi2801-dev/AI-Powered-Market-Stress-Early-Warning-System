@@ -4,17 +4,11 @@ import numpy as np
 import torch
 import streamlit as st
 
-# ==========================================
-# PAGE CONFIG
-# ==========================================
 st.set_page_config(
     page_title="Market Stress Dashboard",
     layout="wide"
 )
 
-# ==========================================
-# PATH SETUP
-# ==========================================
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 if CURRENT_DIR not in sys.path:
@@ -24,9 +18,6 @@ PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
 
 from model import MarketStressTransformer
 
-# ==========================================
-# STRESS REGIME FUNCTION
-# ==========================================
 try:
     from stress_threshold import stress_regime
 except ImportError:
@@ -41,16 +32,10 @@ except ImportError:
         else:
             return "CRITICAL"
 
-# ==========================================
-# DEVICE
-# ==========================================
 device = torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
 )
 
-# ==========================================
-# LOAD MODEL
-# ==========================================
 @st.cache_resource
 def load_trained_model():
 
@@ -78,7 +63,6 @@ def load_trained_model():
             checkpoint["model_state_dict"]
         )
 
-    # old save format
     else:
         model.load_state_dict(
             checkpoint
@@ -90,10 +74,7 @@ def load_trained_model():
     return model
 
 model = load_trained_model()
-
-# ==========================================
 # PLACEHOLDER INPUT
-# ==========================================
 def get_latest_window():
 
     return np.random.randn(
@@ -101,9 +82,7 @@ def get_latest_window():
         4
     ).astype(np.float32)
 
-# ==========================================
-# UI
-# ==========================================
+
 st.title("📊 Market Stress Early Warning System")
 
 st.markdown(
