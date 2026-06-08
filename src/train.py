@@ -125,3 +125,41 @@ os.makedirs(MODEL_PATH, exist_ok=True)
 torch.save(model.state_dict(), os.path.join(MODEL_PATH, "stress_model.pth"))
 
 print("Model saved successfully.")
+
+print("\nLoading test dataset...")
+
+X_test = np.load(os.path.join(DATA_PATH, "X_test.npy"))
+Y_test = np.load(os.path.join(DATA_PATH, "Y_test.npy"))
+
+X_test = torch.tensor(X_test, dtype=torch.float32)
+Y_test = torch.tensor(Y_test, dtype=torch.float32)
+
+test_dataset = StressDataset(X_test, Y_test)
+
+test_loader = DataLoader(
+    test_dataset,
+    batch_size=batch_size,
+    shuffle=False,
+    drop_last=False
+)
+
+model.eval()
+
+test_loss = 0
+
+with torch.no_grad():
+
+    for x, y in test_loader:
+
+        x = x.to(device)
+        y = y.to(device)
+
+        pred = model(x)
+
+        loss = loss_fn(pred, y)
+
+        test_loss += loss.item()
+
+final_test_loss = test_loss / len(test_loader)
+print(f"FINAL TEST LOSS: {final_test_loss:.6f}")
+
