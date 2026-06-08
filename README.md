@@ -1,4 +1,4 @@
-#### AI-Powered Market Stress Early Warning System
+### AI-Powered Market Stress Early Warning System
 
 ### Overview
 This project predicts future market stress using order book dynamics and a Transformer-based deep learning model.
@@ -62,26 +62,24 @@ cd AI-Powered-Market-Stress-Early-Warning-System
 pip install -r Requirements.txt
 
 ## Project Structure
-AI-Powered-Market-Stress-Early-Warning-System/
-│
 ├── data/
-│   ├── raw/
-│   └── processed/
+│ ├── raw/
+│ └── processed/
 │
 ├── models/
-│   └── stress_model.pth
+│ └── stress_model.pth
 │
 ├── src/
-│   ├── preprocess.py
-│   ├── labels.py
-│   ├── sequence_dataset.py
-│   ├── split_dataset.py
-│   ├── model.py
-│   ├── train.py
-│   ├── stress_threshold.py
-│   └── app.py
-|   └── features.py  
-|
+│ ├── preprocess.py
+│ ├── features.py
+│ ├── labels.py
+│ ├── sequence_dataset.py
+│ ├── split_dataset.py
+│ ├── model.py
+│ ├── train.py
+│ ├── stress_threshold.py
+│ └── app.py
+│
 ├── requirements.txt
 └── README.md
 
