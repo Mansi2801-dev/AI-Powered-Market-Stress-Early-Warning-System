@@ -6,7 +6,9 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
 
-PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
+PROJECT_PATH = os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))
+)
 sys.path.append(os.path.join(PROJECT_PATH, "src"))
 
 from model import MarketStressTransformer
@@ -17,6 +19,9 @@ print(f"Using device: {device}")
 
 
 DATA_PATH = os.path.join(PROJECT_PATH, "data", "processed")
+
+print("PROJECT_PATH =", PROJECT_PATH)
+print("DATA_PATH =", DATA_PATH)
 
 X_train = np.load(os.path.join(DATA_PATH, "X_train.npy"))
 Y_train = np.load(os.path.join(DATA_PATH, "Y_train.npy"))

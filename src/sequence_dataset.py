@@ -4,7 +4,7 @@ import numpy as np
 LOOKBACK = 60
 
 
-df = pd.read_parquet("data/processed/labeled_data.parquet")
+df = pd.read_parquet("data/processed/training_dataset.parquet")
 
 
 feature_cols = [

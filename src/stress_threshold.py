@@ -39,9 +39,6 @@ def stress_regime(score):
     else:
         return "CRITICAL"
 
-# -----------------------------
-# TEST EXAMPLE (optional)
-# -----------------------------
 sample_scores = [q50, q90, q95, q99, q999]
 
 print("\n=== SAMPLE REGIMES ===")

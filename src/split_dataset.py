@@ -1,7 +1,7 @@
 import numpy as np
 
 X = np.load("data/processed/X.npy")
-Y = np.load("data/processed/Y.npy")
+Y = np.load("data/processed/y.npy")
 
 
 assert len(X) == len(Y), "X and Y mismatch!"

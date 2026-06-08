@@ -32,6 +32,7 @@ print("Mean L50_log:", df["L50_log"].mean())
 
 
 df["Imbalance"] = (df["L10_bids"] - df["L10_asks"])/(df["L10_bids"] + df["L10_asks"])
+print("\nImbalance Statistics")
 print("Min Imbalance: ", df["Imbalance"].min())
 print("Max Imbalance: ", df["Imbalance"].max())
 print("Mean Imbalance: ", df["Imbalance"].mean())
